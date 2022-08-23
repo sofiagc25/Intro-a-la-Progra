@@ -1,0 +1,69 @@
+/* GARCÍA, MUÑOZ, PINEDA
+Dado un grupo de N N´umeros (diferentes a cero), realice un programa que permita
+determinar y dar como salida lo siguiente:
+Número mayor y número menor encontrado en el grupo
+Cantidad de n´umeros negativos
+Promedio de los positivos encontrados*/
+
+#include <iostream>
+using namespace std;
+
+int main(){
+	int N;
+	int cn=0, cp=0; //contador de negativos y contador de positivos
+	double ni, max, men, promp; //números que el usuario inserta, número máximo, número menor, promedio de positivos
+	double sump=0; //suma de números positivos
+	cout<<"Este programa le pide que inserte una cantidad de números, le indica cuantos de ellos son negativos, cual es el mayor, menor y el promedio de los numeros positivos "<<endl;
+	cout<<"Ingrese la cantidad de numeros a ingresar (este valor debe ser un numero natural mayor que 0): "; /*para incluir el
+	caso en el que el usuario inserte un valor <=0, haría falta poner todo dentro de otra condición para numeros positivos e 
+	incluir la consecuencia de que esta condición no se cumpla; no obstante, para eso se le pide que inserte un numero natural 
+	mayor que 0.*/ 
+	cin>>N;
+	cout<<endl;
+	if(N>0){
+		cout<<"Ingrese un numero: ";
+		cin>>ni;
+		max=ni;
+		men=ni;
+		if(ni<0){
+			cn=cn+1;
+		}
+		if(ni>0){
+			sump=sump+ni;
+			cp=cp+1;
+		}
+		for(int i=1; i<N; i=i+1){
+			cout<<"Ingrese un numero: ";
+			cin>>ni;
+			if(ni>max){
+				max=ni;
+			}	
+			if(ni<men){
+				men=ni;
+			}
+			if(ni<0){
+			cn=cn+1;
+			}
+			if(ni>0){
+				sump=sump+ni;
+				cp=cp+1;
+			}	
+		}
+		cout<<endl;
+		cout<<"El numero mayor es: "<<max<<endl;
+		cout<<"El numero menor es: "<<men<<endl;
+		cout<<"La cantidad de numeros negativos insertados es: "<<cn<<endl;
+		if(cp==0){
+	    	cp=1;
+	    	cout<<"No hay numeros positivos por lo que su promedio no existe "<<endl;	
+	  	}
+	  	else{
+	  		promp=sump/cp;
+			cout<<"El promedio de los numeros positivos es: "<<promp<<endl;		
+		}
+	}
+	else{
+		cout<<"cantidad ingresada no valida. "<<endl;
+	}
+}
+	
